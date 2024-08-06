@@ -1,0 +1,247 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+<style>
+.custom_mega_header .header__menu-item span {
+  color: #000;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: normal;
+  margin: 0;
+}
+.custom_mega_header .child_wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.custom_mega_header .child_wrapper li {
+  max-width: 260px;
+  width: 100%;
+}
+.custom_mega_header .child_link {
+  text-decoration: none;
+}
+.custom_mega_header .image {
+  max-width: 100%;
+  height: 140px;
+}
+.custom_mega_header .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.custom_mega_header .content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+}
+.custom_mega_header .content h5 {
+  color: #000;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: normal;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.custom_mega_header .menu-drawer__menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.custom_mega_header .menu-drawer__menu-item  svg {
+  width: 15px;
+  height: 15px;
+}
+.custom_mega_header .menu-drawer__close-button svg {
+  width: 15px;
+  height: 15px; 
+  transform: rotate(180deg);
+}
+@media screen and (max-width: 991px) {
+.custom_mega_header .child_wrapper {
+  flex-direction: column;
+  padding: 30px;
+  row-gap: 30px;
+} 
+.custom_mega_header .child_wrapper li {
+  max-width: 100%;
+}
+.custom_mega_header .child_link {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.custom_mega_header .content {
+  padding: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.custom_mega_header span.arrow_svg {
+  align-self: self-end;
+  display: flex;
+}
+.custom_mega_header .menu-drawer__navigation-container {
+  height: auto;
+  padding: 0 25px;
+}
+.custom_mega_header .menu-drawer__menu-item {
+  padding-left: 0; 
+  padding-right: 0;
+}
+.custom_mega_header .search-modal__content {
+  padding: 0;
+}
+.custom_mega_header .menu-drawer-container .search__input.field__input {
+  justify-content: space-between;
+  padding: 15px;
+  background: #ddd;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.custom_mega_header .field:before,
+.custom_mega_header .field:after {
+  display: none;
+}
+.custom_mega_header .menu-drawer-container .header__search  .header__icon {
+  height: 20px;
+  width: 20px;
+}
+}
+</style>
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span>
+                {% render 'icon-caret' %}
+              </summary>
+              <div id="MegaMenu-Content-{{ forloop.index }}" class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup" tabindex="-1" >
+                <ul class="mega-menu__list child_wrapper page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}" role="list">
+                  {%- for childlink in link.links -%}
+                    <li>
+<!-- ************************************************************************************************************************************************* -->
+                    
+                      {%- assign product = all_products[childlink.object.handle] -%}
+                      {%- assign article = articles[childlink.object.handle] -%}
+                      {%- assign collection = collections[childlink.object.handle] -%}
+                    
+                      
+                      {% if childlink.object.object_type == 'product' and product %}                        
+                        <a href="{{ product.url }}" class="child_link">
+                          <div class="image">
+                             {{ product.featured_image | image_url: width: product.featured_image.width | image_tag: loading: 'lazy' }}
+                          </div>
+                          <div class="content">
+                            <h5>{{ product.title }}</h5>
+                            <span class="arrow_svg">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 23 17" fill="none">
+                                <path d="M0 8.5H22M22 8.5L13.4444 0.5M22 8.5L13.4444 16.5" stroke="#4A4E58"/>
+                              </svg>
+                            </span>
+                          </div> 
+                        </a>
+                      {% elsif childlink.object.url contains 'collection' and collection %}
+                          <a href="{{ collection.url }}" class="child_link">
+                            <div class="image">
+                              {{ collection.image | image_url: width: collection.image.width | image_tag: loading: 'lazy' }}
+                            </div>
+                            <div class="content">
+                              <h5>{{ collection.title }}</h5>
+                              <span class="arrow_svg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 23 17" fill="none">
+                                  <path d="M0 8.5H22M22 8.5L13.4444 0.5M22 8.5L13.4444 16.5" stroke="#4A4E58"/>
+                                </svg>
+                              </span>
+                            </div> 
+                          </a>
+                      {% elsif childlink.object.object_type == 'article' and article %}                                    
+                        <a href="{{ article.url }}" class="child_link">
+                            <div class="image">
+                              {{ article.image | image_url: width: article.image.width | image_tag: loading: 'lazy' }}
+                            </div>
+                            <div class="content">
+                              <h5>{{ article.title }}</h5>
+                              <span class="arrow_svg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 23 17" fill="none">
+                                  <path d="M0 8.5H22M22 8.5L13.4444 0.5M22 8.5L13.4444 16.5" stroke="#4A4E58"/>
+                                </svg>
+                              </span>
+                            </div> 
+                          </a>
+                      {% else %} 
+                        <a id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}" href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}" {% if childlink.current %}aria-current="page"{% endif %}>                          
+                          {{ childlink.title }}
+                        </a>
+                      {% endif %}
+
+<!-- ************************************************************************************************************************************************* -->
+                         {%- if childlink.links != blank -%}
+                        <ul class="list-unstyled" role="list">
+                          {%- for grandchildlink in childlink.links -%}
+                            <li> 
+                              <a
+                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchildlink.url }}"
+                                class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                {% if grandchildlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ grandchildlink.title | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </details>
+          </header-menu>
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

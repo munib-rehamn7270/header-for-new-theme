@@ -1,0 +1,252 @@
+<style>
+.hh_free_shipping{
+    width: 100%;
+    height: auto;
+}
+.hh_free_shipping .container {
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+} 
+.hh_free_shipping .icon_image {
+    max-width: 181px;
+    height: auto;  
+    margin-right: 100px;
+}
+.hh_free_shipping .icon_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.hh_free_shipping h2 {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 56px;
+    letter-spacing: 1.68px;
+    max-width: 418px;
+    margin: 0;
+} 
+.hh_free_shipping span.desc {
+    max-width: 516px;
+    display: block;
+}
+.hh_free_shipping span.desc,
+.hh_free_shipping span.desc p {
+    color: #FFF;
+    font-family: "Public Sans";
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 1.12px;
+    margin: 0;
+}
+.hh_free_shipping .signup_btn {
+    border-radius: 35px;
+    background: #FAA821;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 2.88px;
+    padding: 18px 30px;
+    text-decoration: none;
+    max-width: 256px;
+    width: 100%;
+    margin-left: 16px;
+    border: 2px solid #FAA821;
+    transition: 0.4s ease-in-out;
+}
+.hh_free_shipping .signup_btn:hover {
+    background: #fff;
+    color: #FAA821;
+}
+</style>
+{%- style -%}
+#hh_free_shipping-{{ section.id }} h2,
+#hh_free_shipping-{{ section.id }} span p {
+  color:{{ section.settings.font_color }};
+}
+#hh_free_shipping-{{ section.id }} {
+  background-color: {{ section.settings.bg_color }}; 
+  padding-top:{{ section.settings.desktop_padding_top }}px;
+  padding-bottom:{{ section.settings.desktop_padding_bottom }}px;
+  margin-top:{{ section.settings.desktop_margin_top }}px;
+  margin-bottom:{{ section.settings.desktop_margin_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+  #hh_free_shipping-{{ section.id }} {
+    padding-top:{{ section.settings.mbl_padding_top }}px;
+    padding-bottom:{{ section.settings.mbl_padding_bottom }}px;
+    margin-top:{{ section.settings.mbl_margin_top }}px;
+    margin-bottom:{{ section.settings.mbl_margin_bottom }}px; 
+  }
+}
+{%- endstyle -%}
+<section class="hh_free_shipping" id="hh_free_shipping-{{ section.id }}">
+    <div class="container">
+        {% if section.settings.icon_img != blank %}
+            <div class="icon_image">
+                {{ section.settings.icon_img | image_url: width: section.settings.icon_img.width| image_tag: loading: 'lazy'}}
+            </div>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+            <h2>{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.desc != blank %}
+          <span class="desc">{{ section.settings.desc }}</span>
+        {% endif %}
+        {% if section.settings.btn_text != blank %}
+          <a href="{{ section.settings.btn_url }}" class="signup_btn">{{ section.settings.btn_text }}</a>
+        {% endif %}
+    </div>
+</section>
+{% schema %}
+  {
+    "name": "HH Free Shipping",
+    "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_img",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Members Get FREE Shipping"
+        },
+        {
+          "type": "richtext",
+          "id": "desc",
+          "label": "Description",
+          "default": "<p>on orders $100 or more. Plus earn points, get exclusive discounts and more!</p>"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button Text",
+          "default": "SIGN UP"
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button Url"
+        },
+        {
+          "type":"header",
+          "content":"Section Color Setting"
+        }, 
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "BG Color",
+          "default": "#038E83"
+        },
+        {
+          "type": "color",
+          "id": "font_color",
+          "label": "Font Color",
+          "default": "#FFF"
+        },
+        {
+          "type":"header",
+          "content":"Section Desktop Spacing"
+        }, 
+        {
+          "type": "range",
+          "id": "desktop_padding_top",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Padding Top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "desktop_padding_bottom",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Padding Bottom",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "desktop_margin_top",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Margin Top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "desktop_margin_bottom",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Margin Bottom",
+          "default": 0
+        },
+        {
+          "type":"header",
+          "content":"Section Mobile Spacing"
+        }, 
+        {
+          "type": "range",
+          "id": "mbl_padding_top",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Padding Top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "mbl_padding_bottom",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Padding Bottom",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "mbl_margin_top",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Margin Top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "mbl_margin_bottom",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Margin Bottom",
+          "default": 0
+        }
+    ],
+    "presets": [
+    {
+      "name": "HH Free Shipping"
+    }
+  ]
+  }
+{% endschema %}

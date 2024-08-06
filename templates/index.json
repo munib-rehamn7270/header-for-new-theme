@@ -1,0 +1,57 @@
+{
+  "sections": {
+    "hh_custom_collection_ennBnf": {
+      "type": "hh--custom-collection",
+      "blocks": {
+        "block_DCkBkU": {
+          "type": "block",
+          "settings": {
+            "collection": "books",
+            "image_size": "small",
+            "image": "shopify:\/\/shop_images\/DoW_latestDeals_1.png",
+            "svg_color": "#ffffff"
+          }
+        },
+        "block_YPVWTy": {
+          "type": "block",
+          "settings": {
+            "collection": "bags",
+            "image_size": "small",
+            "image": "shopify:\/\/shop_images\/wunder_latestDeals_1.png",
+            "svg_color": "#121212"
+          }
+        },
+        "block_aCmPnt": {
+          "type": "block",
+          "settings": {
+            "collection": "t-shirts",
+            "image_size": "large",
+            "image": "shopify:\/\/shop_images\/sketch_latestDeals_1.png",
+            "svg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "block_DCkBkU",
+        "block_YPVWTy",
+        "block_aCmPnt"
+      ],
+      "settings": {
+        "heading": "Latest Deals",
+        "btn_text": "SHOP DEALS",
+        "btn_url": "",
+        "desktop_padding_top": 100,
+        "desktop_padding_bottom": 100,
+        "desktop_margin_top": 0,
+        "desktop_margin_bottom": 0,
+        "mbl_padding_top": 60,
+        "mbl_padding_bottom": 60,
+        "mbl_margin_top": 0,
+        "mbl_margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "hh_custom_collection_ennBnf"
+  ]
+}

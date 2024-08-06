@@ -1,0 +1,331 @@
+<style>
+.lp_custom_collection {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.lp_custom_collection::before {
+  content: '0';
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 65%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('{{ section.settings.desktop_img | img_url: 'master' }}');
+}
+.lp_custom_collection .container {
+  max-width: 1370px;
+  padding: 0 24px;
+  margin: 0 auto;
+}
+.lp_custom_collection .section_header {
+  max-width: 722px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+.lp_custom_collection h2 {
+  font-family: 'Avenir';
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 140%;
+  margin: 0;
+  padding-bottom: 16px;
+}
+.lp_custom_collection span.desc,
+.lp_custom_collection span.desc p {
+  font-family: 'Avenir';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  margin: 0;
+}
+.lp_custom_collection .collection_inner {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.lp_custom_collection .product_col {
+  max-width: 355px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+}
+.lp_custom_collection .cover_shadow {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+.lp_custom_collection .cover_shadow svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.lp_custom_collection .product_image {
+  width: 100%;
+}
+.lp_custom_collection  img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+  position: relative;
+}
+.lp_custom_collection .product_content {
+  text-align: center;
+}
+.lp_custom_collection h3 {
+  color: #000433;
+  font-family: 'Avenir';
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  margin: 0;
+  padding-bottom: 24px;
+}
+.lp_custom_collection .product_desc {
+  padding-bottom: 12px;
+}
+.lp_custom_collection .product_desc,
+.lp_custom_collection .product_desc p  {
+  color: #8D95A3;
+  font-family: 'Avenir';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+}
+.lp_custom_collection .btn_wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.lp_custom_collection .secondary_btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+@media screen and (max-width: 767px) { 
+.lp_custom_collection::before {
+  background-size: 100% 35%;
+  background-image: url('{{ section.settings.mobile_img | img_url: 'master' }}');
+}
+}
+</style>
+{% style %}
+  #lp_custom_collection-{{ section.id }} {
+    padding-top:{{ section.settings.desktop_padding_top }}px;
+    padding-bottom:{{ section.settings.desktop_padding_bottom }}px;
+    margin-top:{{ section.settings.desktop_margin_top }}px;
+    margin-bottom:{{ section.settings.desktop_margin_bottom }}px;
+  }
+  @media screen and (max-width: 991px) { 
+    #lp_custom_collection-{{ section.id }} {
+      padding-top:{{ section.settings.mbl_padding_top }}px;
+      padding-bottom:{{ section.settings.mbl_padding_bottom }}px;
+      margin-top:{{ section.settings.mbl_margin_top }}px;
+      margin-bottom:{{ section.settings.mbl_margin_bottom }}px;
+    }
+  }
+{% endstyle %}
+<section class="lp_custom_collection" id="lp_custom_collection-{{ section.id }}">
+  <div class="container">
+    {% assign collection = collections[section.settings.lp_collection] %}
+    <div class="section_header">
+      {% if collection.title != blank %}
+        <h2>{{ collection.title }}</h2>
+      {% endif %}
+      {% if collection.description != blank %}
+        <span class="desc">{{ collection.description }}</span>
+      {% endif %}
+    </div>
+    
+    <div class="collection_inner">
+      {% for product in collection.products limit: section.settings.lp_products_to_show %}
+        <div class="product_col">
+             <div class="cover_shadow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="270" height="200" viewBox="0 0 270 200" fill="none">
+                <g opacity="0.85" filter="url(#filter0_f_2005_9478)">
+                  <ellipse cx="135.015" cy="99.9601" rx="76.2206" ry="41.6" fill="#8BFDB3"/>
+                </g>
+                <defs>
+                  <filter id="filter0_f_2005_9478" x="0.452484" y="0.0186462" width="269.124" height="199.883" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                    <feGaussianBlur stdDeviation="29.1707" result="effect1_foregroundBlur_2005_9478"/>
+                  </filter>
+                </defs>
+              </svg>
+            </div>
+          <div class="product_image">
+            {{ product.images[0] | img_url: '1024x1024' | img_tag }}
+          </div>
+          <div class="product_content">
+            <h3>{{ product.title }}</h3>
+            <div class="product_desc">{{ product.description }}</div>
+            <div class="btn_wrapper">
+              <a href="{{ product.url }}" class="primary_btn btn">{{ section.settings.lp_btn1_text }}</a>
+              <a href="{{ section.settings.lp_btn2_url }}" class="secondary_btn btn">{{ section.settings.lp_btn2_text }}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00781 2.17285C0.73167 2.17285 0.507812 2.39671 0.507812 2.67285C0.507812 2.94899 0.73167 3.17285 1.00781 3.17285H2.29401L4.31332 11.1109L4.40916 11.4876H4.79789H12.6802C12.9564 11.4876 13.1802 11.2637 13.1802 10.9876C13.1802 10.7114 12.9564 10.4876 12.6802 10.4876H5.18662L3.1673 2.54958L3.07147 2.17285H2.68274H1.00781ZM4.36023 3.2674C4.08409 3.2674 3.86023 3.49125 3.86023 3.7674C3.86023 4.04354 4.08409 4.2674 4.36023 4.2674H13.064L11.6717 8.15413H5.8919C5.61575 8.15413 5.3919 8.37798 5.3919 8.65413C5.3919 8.93027 5.61575 9.15413 5.8919 9.15413H12.0238H12.3758L12.4945 8.82274L14.2449 3.93601L14.4844 3.2674H13.7742H4.36023ZM5.41007 13.5981C5.58717 13.5981 5.73075 13.4545 5.73075 13.2774C5.73075 13.1003 5.58717 12.9567 5.41007 12.9567C5.23296 12.9567 5.08939 13.1003 5.08939 13.2774C5.08939 13.4545 5.23296 13.5981 5.41007 13.5981ZM5.41007 14.5981C6.13946 14.5981 6.73075 14.0068 6.73075 13.2774C6.73075 12.548 6.13946 11.9567 5.41007 11.9567C4.68068 11.9567 4.08939 12.548 4.08939 13.2774C4.08939 14.0068 4.68068 14.5981 5.41007 14.5981ZM11.8419 13.3296C11.8419 13.5067 11.6983 13.6503 11.5212 13.6503C11.3441 13.6503 11.2005 13.5067 11.2005 13.3296C11.2005 13.1525 11.3441 13.0089 11.5212 13.0089C11.6983 13.0089 11.8419 13.1525 11.8419 13.3296ZM12.8419 13.3296C12.8419 14.059 12.2506 14.6503 11.5212 14.6503C10.7918 14.6503 10.2005 14.059 10.2005 13.3296C10.2005 12.6002 10.7918 12.0089 11.5212 12.0089C12.2506 12.0089 12.8419 12.6002 12.8419 13.3296Z" fill="#19A7E0"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "LP Custom Collection",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_img",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_img",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "lp_btn1_text",
+      "label": "Primary Button Text"
+    },
+    {
+      "type": "text",
+      "id": "lp_btn2_text",
+      "label": "Secondary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "lp_btn2_url",
+      "label": "Secondary Button Url"
+    },
+    {
+      "type": "collection",
+      "id": "lp_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "lp_products_to_show",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 2,
+      "label": "Product To Show"
+    },
+    {
+      "type": "header",
+      "content": "Section Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "desktop_margin_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "desktop_margin_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mbl_margin_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mbl_margin_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP Custom Collection"
+    }
+  ]
+}
+{% endschema %}
