@@ -1,0 +1,232 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "lp_custom_product_JpmGt3": {
+      "type": "LP_Custom_product",
+      "settings": {
+        "desktop_img": "shopify:\/\/shop_images\/BG_56facb40-25c2-4712-97d4-eb8f783999a5.png",
+        "mobile_img": "shopify:\/\/shop_images\/BG_2.png",
+        "fl_image": "shopify:\/\/shop_images\/BOUQUET-LACTEOL_decoupage-fleurs_3_2.png",
+        "product_img": "shopify:\/\/shop_images\/Packs_4a8d4aaa-0e42-41b3-8f0a-da8c7ba2f3e5.png",
+        "suitable_text": "Suitable for children over 6 months",
+        "product_heading": "<p>Lactéol® diarrhEaseTM <strong>Kids<\/strong><\/p>",
+        "btn_text": "shop on amazon",
+        "btn_url": "",
+        "product_subhead": "<p>A safe and simple solution made to soothe occasional digestive upsets*<\/p>",
+        "product_desc": "<p>Lactéol® diarrhEaseTM is a <strong>digestive postbiotic<\/strong>, that includes <em><strong>Lactobacillus <\/strong><\/em><strong>LB.<\/strong> Lactobacillus LB works naturally with the body to help fight unfriendly bacteria.*<\/p>",
+        "primary_color": "#143759",
+        "secondary_color": "#eb7c71",
+        "desktop_padding_top": 100,
+        "desktop_padding_bottom": 40,
+        "desktop_margin_top": 0,
+        "desktop_margin_bottom": 0,
+        "mbl_padding_top": 100,
+        "mbl_padding_bottom": 40,
+        "mbl_margin_top": 0,
+        "mbl_margin_bottom": 0
+      }
+    },
+    "lp_introduction_J3VnTj": {
+      "type": "lp_Introduction",
+      "settings": {
+        "heading": "What is Lactéol® diarrhEaseTM Kids?",
+        "desc": "<p><strong>Lactéol® diarrhEaseTM Kids<\/strong> is a <strong>digestive postbiotic <\/strong>specifically designed to help soothe <strong>occasional digestive upsets<\/strong> including stomach discomfort and diarrhea.*<\/p><p>Postbiotics are non-living organisms that promote a healthy functioning digestive system*, while being gentle.<\/p><p><em><strong>Lactobacillus<\/strong><\/em><strong> LB <\/strong>is the active dietary ingredient in Lactéol® diarrhEaseTM Kids. It is not affected by the acid environment of the stomach, allowing it to reach the intestines where it's needed most.1  Lactobacillus LB has been shown to play an important role in restoring the delicate natural balance of micro-organisms found in our intestines.*<\/p><p><em><strong>Lactobacillus<\/strong><\/em><strong> LB helps defend your gut to fight unfriendly bacteria.*<\/strong><\/p>",
+        "btn_text": "shop on amazon",
+        "btn_url": "",
+        "bg_color": "#ffffff",
+        "font_color": "#143759",
+        "desktop_padding_top": 80,
+        "desktop_padding_bottom": 40,
+        "desktop_margin_top": 0,
+        "desktop_margin_bottom": 0,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "mbl_margin_top": 0,
+        "mbl_margin_bottom": 0
+      }
+    },
+    "lp_take_blocks_7EhCC3": {
+      "type": "Lp_take_blocks",
+      "blocks": {
+        "block_QxWEhW": {
+          "type": "block",
+          "settings": {
+            "icon_img": "shopify:\/\/shop_images\/Pictos_517d280b-a9b8-4b2f-99c8-c0bef799c6c2.png",
+            "heading": "During occasional digestive upsets*",
+            "desc": "<p><em>Lactobacillus <\/em>LB naturally strengthens and reinforces the good bacteria in the digestive tract*<\/p>"
+          }
+        },
+        "block_nhRaxg": {
+          "type": "block",
+          "settings": {
+            "icon_img": "shopify:\/\/shop_images\/Piscctos.png",
+            "heading": "If you\/your child experience symptoms associated with occasional diarrhea.*",
+            "desc": "<p>Lactéol® diarrhEaseTM Kids helps relieve occasional diarrhea associated symptoms, such as <strong>abdominal discomfort and bloating*<\/strong><\/p>"
+          }
+        },
+        "block_Fpcnr7": {
+          "type": "block",
+          "settings": {
+            "icon_img": "shopify:\/\/shop_images\/Pictocss.png",
+            "heading": "During times when occasional diarrhea may occur, like while taking antibiotics",
+            "desc": "<p><em>Lactobacillus <\/em>LB <strong>shortens the duration <\/strong>of occasional diarrhea*<\/p>"
+          }
+        },
+        "block_yDXN9N": {
+          "type": "block",
+          "settings": {
+            "icon_img": "shopify:\/\/shop_images\/Picstos.png",
+            "heading": "Keep Lactéol® products handy when travelling",
+            "desc": "<p>Lactéol® diarrhEaseTM Kids helps minimize travel associated stomach and digestive issues*<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_QxWEhW",
+        "block_nhRaxg",
+        "block_Fpcnr7",
+        "block_yDXN9N"
+      ],
+      "settings": {
+        "heading": "When should I give Lactéol® diarrhEaseTM to my child?",
+        "bg_color": "#ffffff",
+        "font_color": "#143759",
+        "desktop_padding_top": 40,
+        "desktop_padding_bottom": 80,
+        "desktop_margin_top": 0,
+        "desktop_margin_bottom": 0,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 80,
+        "mbl_margin_top": 0,
+        "mbl_margin_bottom": 0
+      }
+    },
+    "lp_ingredients_bmKVVU": {
+      "type": "Lp_Ingredients",
+      "settings": {
+        "heading": "How should Lactéol® diarrhEaseTM Kids be taken?",
+        "desc": "<p>As with any dietary supplement or medication, consult with your doctor or pharmacist before use.<\/p><p>Lactéol® diarrhEaseTM Kids sachets are dissolved in water and taken by mouth. Each serving contains 10 billion inactivated Lactobacillus LB.<\/p>",
+        "product_img": "shopify:\/\/shop_images\/Packs_4a8d4aaa-0e42-41b3-8f0a-da8c7ba2f3e5.png",
+        "suitable_text": "Suitable for children over 6 months",
+        "direction_heading": "Directions for use",
+        "direction_desc": "<p>Simply mix the contents of the sachet either in a baby bottle with water or in a half glass of water. Stir the mixture to make sure that the powder is dispersed then give it to your child to drink.<\/p><p>Children <strong>6 months to 5 years of age<\/strong>, start with <strong>2 sachets<\/strong>, then take <strong>1 sachet every 12 hours for at least 2 to 3 days<\/strong>. If taking along with antibiotics, continue taking <strong>1 sachet per day for at least 7 days.<\/strong><\/p><p>Lactéol® diarrhEaseTM Kids may be used for <strong>up to 30 days. <\/strong><\/p>",
+        "supplement_desktop_img": "shopify:\/\/shop_images\/Screenshot_12.png",
+        "bottom_desc": "<p>Other ingredients:  Hydroxypropyl methylcellulose, microcrystalline cellulose, calcium silicate, magnesium stearate and calcium carbonate (color).<\/p><p><strong>Contains Milk (lactose), Soy, Wheat<\/strong><\/p><p>Distributed by:  i-Health, Inc. 25 Bacon Road, Enfield, CT  06082<\/p>",
+        "background": "linear-gradient(106deg, #003954 -0.4%, #80A0CB 107.02%), linear-gradient(74deg, #EB7C71 -0.38%, #C3645B 100%), linear-gradient(110deg, #243181 9.95%, #335FAA 102.39%)",
+        "font_color": "#ffffff",
+        "desktop_padding_top": 80,
+        "desktop_padding_bottom": 80,
+        "desktop_margin_top": 0,
+        "desktop_margin_bottom": 0,
+        "mbl_padding_top": 40,
+        "mbl_padding_bottom": 40,
+        "mbl_margin_top": 0,
+        "mbl_margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "lp_custom_product_JpmGt3",
+    "lp_introduction_J3VnTj",
+    "lp_take_blocks_7EhCC3",
+    "lp_ingredients_bmKVVU"
+  ]
+}

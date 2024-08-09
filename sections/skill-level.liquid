@@ -1,0 +1,112 @@
+<style>
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: white;
+    outline: none;
+    opacity: 0.7;
+    border-radius: 5px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #5CF5FF;
+    cursor: pointer;
+    border: 5px solid #3C1AB8;
+}
+
+.slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #5CF5FF;
+    cursor: pointer;
+    border: 5px solid #3C1AB8;
+}
+
+.slider-value {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #5CF5FF;
+    color: #3C1AB8;
+    border-radius: 50%;
+    padding: 10px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+</style>
+
+<section class="mm_skill_form">
+  <div class="container">
+    <div class="form_inner">
+      <div class="left_content">
+        <div class="email_data">
+          <h3>Email address*</h3>
+          <input type="email">
+        </div>
+        <div class="slider-container">
+            <label for="skillRange">Skill level</label>
+            <input type="range" id="skillRange" min="0" max="10" value="5" class="slider">
+            <div class="slider-value" id="sliderValue">5</div>
+        </div>
+      </div>
+      <div class="right_content">
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const slider = document.getElementById("skillRange");
+const sliderValue = document.getElementById("sliderValue");
+
+slider.addEventListener("input", function() {
+    sliderValue.textContent = this.value;
+    const valuePercentage = (this.value - this.min) / (this.max - this.min) * 100;
+    sliderValue.style.left = `calc(${valuePercentage}% + (${8 - valuePercentage * 0.15}px))`;
+});
+
+</script>
+
+{% schema %}
+  {
+    "name": "MM Skill Form",
+    "settings": [
+      
+    ],
+    "presets": [
+      {
+        "name": "MM Skill Form"
+      }
+    ]
+  }
+{% endschema %}

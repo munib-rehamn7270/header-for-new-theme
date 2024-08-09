@@ -1,0 +1,249 @@
+<style>
+.lp_introduction {
+  width: 100%;
+  height: auto;
+}
+.lp_introduction .container {
+  max-width: 1160px;
+  padding: 0 24px;
+  margin: 0 auto;
+}
+.lp_introduction h2 {
+  font-family: "Georama", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 48px;
+  padding-bottom: 40px; 
+  margin: 0;
+}
+.lp_introduction div.desc,
+.lp_introduction div.desc p {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 32px;
+  margin: 0;
+}
+.lp_introduction div.desc p {
+  padding-bottom: 40px;
+}
+.lp_introduction div.desc strong {
+  font-weight: 700;
+}
+.lp_introduction a.shop_btn.btn {
+  border-radius: 100px;
+  background: var(--Blue, #19A7E0);
+  display: flex;
+  padding: 12px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--White, #FFF);
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+  max-width: 200px;
+  width: 100%;
+}
+@media screen and (max-width: 991px) {
+  .lp_introduction h2 {
+    font-size: 34px;
+    line-height: 40px;
+    padding-bottom: 30px;
+  }
+  .lp_introduction div.desc, 
+  .lp_introduction div.desc p {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .lp_introduction div.desc p {
+    padding-bottom: 30px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .lp_introduction h2 {
+    font-size: 28px;
+    line-height: 33px;
+  }
+}
+</style>
+{% style %}
+  #lp_introduction-{{ section.id }} h2,
+  #lp_introduction-{{ section.id }} div.desc {
+    color:{{ section.settings.font_color }};
+  }
+  #lp_introduction-{{ section.id }} {
+    background-color:{{ section.settings.bg_color }};
+    padding-top:{{ section.settings.desktop_padding_top }}px;
+    padding-bottom:{{ section.settings.desktop_padding_bottom }}px;
+    margin-top:{{ section.settings.desktop_margin_top }}px;
+    margin-bottom:{{ section.settings.desktop_margin_bottom }}px;
+  }
+  @media screen and (max-width: 991px) { 
+    #lp_introduction-{{ section.id }} {
+      padding-top:{{ section.settings.mbl_padding_top }}px;
+      padding-bottom:{{ section.settings.mbl_padding_bottom }}px;
+      margin-top:{{ section.settings.mbl_margin_top }}px;
+      margin-bottom:{{ section.settings.mbl_margin_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="lp_introduction" id="lp_introduction-{{ section.id }}">
+  <div class="container">
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.desc != blank %}
+        <div class="desc">{{ section.settings.desc }}</div>
+      {% endif %}
+      {% if section.settings.btn_text != blank %}
+        <a href="{{ section.settings.btn_url }}" class="shop_btn btn">{{ section.settings.btn_text }} <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 15 13" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00781 0.172852C0.73167 0.172852 0.507812 0.396709 0.507812 0.672852C0.507812 0.948994 0.73167 1.17285 1.00781 1.17285H2.29401L4.31332 9.11085L4.40916 9.48758H4.79789H12.6802C12.9564 9.48758 13.1802 9.26373 13.1802 8.98758C13.1802 8.71144 12.9564 8.48758 12.6802 8.48758H5.18662L3.1673 0.549585L3.07147 0.172852H2.68274H1.00781ZM4.36023 1.2674C4.08409 1.2674 3.86023 1.49125 3.86023 1.7674C3.86023 2.04354 4.08409 2.2674 4.36023 2.2674H13.064L11.6717 6.15413H5.8919C5.61575 6.15413 5.3919 6.37798 5.3919 6.65413C5.3919 6.93027 5.61575 7.15413 5.8919 7.15413H12.0238H12.3758L12.4945 6.82274L14.2449 1.93601L14.4844 1.2674H13.7742H4.36023ZM5.41007 11.5981C5.58717 11.5981 5.73075 11.4545 5.73075 11.2774C5.73075 11.1003 5.58717 10.9567 5.41007 10.9567C5.23296 10.9567 5.08939 11.1003 5.08939 11.2774C5.08939 11.4545 5.23296 11.5981 5.41007 11.5981ZM5.41007 12.5981C6.13946 12.5981 6.73075 12.0068 6.73075 11.2774C6.73075 10.548 6.13946 9.95671 5.41007 9.95671C4.68068 9.95671 4.08939 10.548 4.08939 11.2774C4.08939 12.0068 4.68068 12.5981 5.41007 12.5981ZM11.8419 11.3296C11.8419 11.5067 11.6983 11.6503 11.5212 11.6503C11.3441 11.6503 11.2005 11.5067 11.2005 11.3296C11.2005 11.1525 11.3441 11.0089 11.5212 11.0089C11.6983 11.0089 11.8419 11.1525 11.8419 11.3296ZM12.8419 11.3296C12.8419 12.059 12.2506 12.6503 11.5212 12.6503C10.7918 12.6503 10.2005 12.059 10.2005 11.3296C10.2005 10.6002 10.7918 10.0089 11.5212 10.0089C12.2506 10.0089 12.8419 10.6002 12.8419 11.3296Z" fill="white"/>
+          </svg></a>
+      {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LP Introduction",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What is Lactéol® diarrhEaseTM?"
+    },
+    {
+      "type": "richtext", 
+      "id": "desc", 
+      "label": "Description",
+      "default": "<p>Lactéol® diarrhEaseTM is a digestive postbiotic specifically designed to soothe occasional digestive upsets including stomach discomfort and diarrhea.*</p>"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button Url"
+    },
+    {
+      "type":"header",
+      "content":"Section Color Setting"
+    }, 
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "BG Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font Color",
+      "default": "#143759"
+    },
+    {
+      "type": "header",
+      "content": "Section Desktop Spacing" 
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "desktop_margin_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "desktop_margin_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mbl_margin_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mbl_margin_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP Introduction"
+    }
+  ]
+}
+{% endschema %}

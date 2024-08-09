@@ -15,8 +15,9 @@
   gap: 20px;
   padding-bottom: 50px;
 }
-.hh_custom_collection h2 { 
-  font-family: Inter; 
+.hh_custom_collection h2 {
+  color: #163029;
+  font-family: Inter;
   font-size: 48px;
   font-weight: 800;
   line-height: 54px;
@@ -29,19 +30,23 @@
   flex-wrap: wrap;
   row-gap: 35px;
 }
-.hh_custom_collection .collection_inner .collection_image_large {
-  width: 100% !important;
+.hh_custom_collection .collection_inner .collection_image_small {
+  width: 100%;
   display: block;
   position: relative;
 }
-.hh_custom_collection .collection_inner img {
+.hh_custom_collection .collection_inner .collection_image_small img {
   width: 100%;
   height: 100%;
   object-fit: unset;
 }
-.hh_custom_collection .collection_inner .collection_image_small {
-  width: calc(50% - 18px);
-  position: relative;
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+1),
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+2),
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+4),
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+5),
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+7), 
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+8) {
+  width: calc(50% - 16px);
 }
 .hh_custom_collection span.arrow_svg {
   position: absolute;
@@ -118,8 +123,13 @@
 }
 .hh_custom_collection .collection_inner {
   row-gap: 20px;
-} 
-.hh_custom_collection .collection_inner .collection_image_small {
+}
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+1),
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+2),
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+4),
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+5),
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+7), 
+.hh_custom_collection .collection_inner .collection_image_small:nth-child(6n+8) {
   width: 100%;
 }
 .hh_custom_collection span.arrow_svg {
@@ -134,11 +144,7 @@
       stroke:{{ block.settings.svg_color }};
     }
   {% endfor %}
-  #hh_custom_collection-{{ section.id }} h2 { 
-    color:{{ section.settings.heading_color }};
-  }
   #hh_custom_collection-{{ section.id }} {
-    background-color: {{ section.settings.bg_color }}; 
     padding-top:{{ section.settings.desktop_padding_top }}px;
     padding-bottom:{{ section.settings.desktop_padding_bottom }}px;
     margin-top:{{ section.settings.desktop_margin_top }}px;
@@ -153,22 +159,19 @@
     }
   }
 {% endstyle %}
-
 <section class="hh_custom_collection" id="hh_custom_collection-{{ section.id }}">
   <div class="container">
     <div class="section_header">
       {% if section.settings.heading != blank %}
         <h2>{{ section.settings.heading }}</h2>
       {% endif %}
-      {% if section.settings.btn_text != blank %}
-        <a href="{{ section.settings.btn_url }}" class="shop_btn">{{ section.settings.btn_text }}</a>
-      {% endif %}
+       <a href="{{ section.settings.btn_url }}" class="shop_btn">{{ section.settings.btn_text }}</a>
     </div> 
     <div class="collection_inner">
       {% for block in section.blocks %} 
         {% assign collection = collections[block.settings.collection] %} 
           {% if collection.url != blank %}
-             <a href="{{ collection.url }}" id="collection_image-{{ block.id }}" class="collection_image_small {% if block.settings.image_size == 'large' %}collection_image_large{% endif %}">
+             <a href="{{ collection.url }}" id="collection_image-{{ block.id }}" class="collection_image_small{% if section.settings.image-size == 'large' %}collection_image_large{% endif %}">
                 {{ block.settings.image | image_url: width: block.settings.image.width| image_tag: loading: 'lazy'}}
                  <span class="arrow_svg">
                     <svg width="57" height="57" viewBox="0 0 57 57" fill="none">
@@ -182,7 +185,8 @@
     </div>
   </div>
 </section>
-              
+
+
 {% schema %}
 {
   "name": "HH Custom Collection",
@@ -203,22 +207,6 @@
       "type": "url",
       "id": "btn_url",
       "label": "Button Url"
-    },
-    {
-      "type":"header",
-      "content":"Section Color Setting"
-    }, 
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "BG Color",
-      "default": "#fff"
-    },
-    {
-      "type": "color",
-      "id": "heading_color",
-      "label": "Heading Color",
-      "default": "#163029"
     },
     {
       "type": "header",
@@ -320,22 +308,6 @@
           "label": "Collection"
         },
         {
-          "type": "select",
-          "id": "image_size",
-          "label": "Image Size",
-          "options": [
-            {
-              "value": "small",
-              "label": "small"
-            },
-            {
-              "value": "large",
-              "label": "large"
-            }
-          ],
-          "default": "small"
-        },
-        {
           "type": "image_picker",
           "id": "image",
           "label": "Image"
@@ -345,7 +317,7 @@
           "id": "svg_color",
           "label": "Arrow Color",
           "default": "#fff"
-        }
+        },
       ]
     }
    ],

@@ -1,0 +1,390 @@
+<style>
+.lp_ingredients {
+  width: 100%;
+  height: auto;
+}
+.lp_ingredients .container {
+  max-width: 1160px;
+  padding: 0 24px;
+  margin: 0 auto;
+}
+.lp_ingredients h2 {
+  font-family: "Georama", sans-serif;
+  color: var(--White, #FFF);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 48px;
+  padding-bottom: 40px; 
+  margin: 0;
+}
+.lp_ingredients div.desc {
+  padding-bottom: 40px;
+}
+.lp_ingredients div.desc,
+.lp_ingredients div.desc p {
+  font-family: "Roboto", sans-serif;
+  color: var(--White, #FFF);
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 28px;
+  margin: 0;
+}
+.lp_ingredients div.desc p {
+  padding-bottom: 20px;
+}
+.lp_ingredients .image_text_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 20px;
+}
+.lp_ingredients .image_wrapper {
+  max-width: 450px;
+  width: 100%;
+}
+.lp_ingredients img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.lp_ingredients .text_wrapper {
+  width: 100%;
+}
+.lp_ingredients h5 {
+  color: var(--White, #FFF);
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 15px; 
+  margin: 0;
+}
+.lp_ingredients h4 {
+  color: var(--White, #FFF);
+  font-family: Georama;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px;
+  padding-bottom: 12px; 
+  margin: 0;
+}
+.lp_ingredients div.direction_desc,
+.lp_ingredients div.direction_desc p {
+  font-family: "Roboto", sans-serif;
+  color: var(--White, #FFF);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+  margin: 0;
+}
+.lp_ingredients div.direction_desc strong {
+  font-weight: 700;
+}
+.lp_ingredients div.direction_desc p:nth-child(1) {
+  padding-bottom: 20px;
+}
+.lp_ingredients .supplement_wrapper {
+  max-width: 920px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+.lp_ingredients div.bottom_desc,
+.lp_ingredients div.bottom_desc p {
+  font-family: "Roboto", sans-serif;
+  color: var(--White, #FFF);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 15px;
+  margin: 0;
+}
+.lp_ingredients div.bottom_desc strong {
+  font-weight: 500;
+  padding-bottom: 12px;
+  display: block;
+}
+.lp_ingredients .mobile_image {
+  display: none;
+}
+@media screen and (max-width: 991px) {
+  .lp_ingredients .desktop_image {
+    display: none;
+  }
+  .lp_ingredients .mobile_image {
+    display: block;
+  }
+  .lp_ingredients h2 {
+    font-size: 34px;
+    line-height: 40px;
+    padding-bottom: 30px;
+  }
+  .lp_ingredients div.desc, 
+  .lp_ingredients div.desc p {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .lp_ingredients .image_text_wrapper {
+    padding-bottom: 20px;
+  }
+  .lp_ingredients .image_text_wrapper {
+    padding-bottom: 10px;
+  }
+  .lp_ingredients div.direction_desc, 
+  .lp_ingredients div.direction_desc p {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .lp_ingredients .supplement_wrapper {
+    padding-top: 40px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .lp_ingredients .image_text_wrapper {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+  .lp_ingredients h2 {
+    font-size: 28px;
+    line-height: 33px;
+  }
+}
+</style>
+{% style %}
+  #lp_ingredients-{{ section.id }} h2,
+  #lp_ingredients-{{ section.id }} h4,
+  #lp_ingredients-{{ section.id }} h5,
+  #lp_ingredients-{{ section.id }} div.desc,
+  #lp_ingredients-{{ section.id }} div.desc p,
+  #lp_ingredients-{{ section.id }} .direction_desc,
+  #lp_ingredients-{{ section.id }} .direction_desc p,
+  #lp_ingredients-{{ section.id }} .bottom_desc, 
+  #lp_ingredients-{{ section.id }} .bottom_desc p{
+    color:{{ section.settings.font_color }};
+  }
+  #lp_ingredients-{{ section.id }} {
+    background:{{ section.settings.background }};
+    padding-top:{{ section.settings.desktop_padding_top }}px;
+    padding-bottom:{{ section.settings.desktop_padding_bottom }}px;
+    margin-top:{{ section.settings.desktop_margin_top }}px;
+    margin-bottom:{{ section.settings.desktop_margin_bottom }}px;
+  }
+  @media screen and (max-width: 991px) {  
+    #lp_ingredients-{{ section.id }} {
+      padding-top:{{ section.settings.mbl_padding_top }}px;
+      padding-bottom:{{ section.settings.mbl_padding_bottom }}px;
+      margin-top:{{ section.settings.mbl_margin_top }}px;
+      margin-bottom:{{ section.settings.mbl_margin_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="lp_ingredients" id="lp_ingredients-{{ section.id }}">
+  <div class="container">
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.desc != blank %}
+        <div class="desc">{{ section.settings.desc }}</div>
+      {% endif %}
+      <div class="image_text_wrapper">
+         <div class="image_wrapper">
+          {% if section.settings.product_img != blank %}
+            <div class="product_image">
+              {% comment %} {{ product.images[0] | img_url: '1024x1024' | img_tag }} {% endcomment %}
+               {{ section.settings.product_img | image_url: width: section.settings.product_img.width| image_tag: loading: 'lazy'}}
+            </div>
+          {% endif %}
+          <h5>{{ section.settings.suitable_text }}</h5>
+         </div>
+         <div class="text_wrapper">
+            {% if section.settings.direction_heading != blank %}
+              <h4>{{ section.settings.direction_heading }}</h4>
+            {% endif %}
+            {% if section.settings.direction_desc != blank %} 
+              <div class="direction_desc">{{ section.settings.direction_desc }}</div>
+            {% endif %}
+         </div>
+      </div>
+      <div class="supplement_wrapper">
+        {% if section.settings.supplement_desktop_img or section.settings.supplement_mobile_img != blank %}
+          <div class="supplement_image">
+             {% if section.settings.supplement_desktop_img != blank %}
+              {{ section.settings.supplement_desktop_img | image_url: width: section.settings.supplement_desktop_img.width| image_tag: loading: 'lazy', class: "desktop_image" }}
+            {% endif %}
+            {% if  section.settings.supplement_mobile_img != blank %}
+              {{ section.settings.supplement_mobile_img | image_url: width: section.settings.supplement_mobile_img.width| image_tag: loading: 'lazy', class: "mobile_image" }}
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if section.settings.bottom_desc != blank %}
+          <div class="bottom_desc">{{ section.settings.bottom_desc }}</div>
+        {% endif %}
+      </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LP Ingredients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How should I take Lactéol® diarrhEaseTM?"
+    },
+    {
+      "type": "richtext", 
+      "id": "desc", 
+      "label": "Description",
+      "default": "<p>As with any dietary supplement or medication, consult with your doctor or pharmacist before use. Lactéol® diarrhEaseTM capsules are taken by mouth. Each serving contains 10 billion inactivated Lactobacillus LB.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_img",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "suitable_text",
+      "label": "Suitable Text"
+    },
+    {
+      "type": "text",
+      "id": "direction_heading",
+      "label": "Direction Heading",
+      "default": "Directions for use"
+    },
+    {
+      "type": "richtext", 
+      "id": "direction_desc", 
+      "label": "Description",
+      "default": "<p>For adults and children over 6 years of age: Take 1 capsule, two times on the first day. Thereafter take 1 capsule every 12 hours for at least 2 to 3 days. If taking along with antibiotics, continue taking one capsule per day for at least 7 days. Lactéol® diarrhEase™ may be used for up to 30 days.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "supplement_desktop_img",
+      "label": "Supplement Image Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "supplement_mobile_img",
+      "label": "Supplement Image Mobile"
+    },
+    {
+      "type": "richtext",
+      "id": "bottom_desc",
+      "label": "Bottom Description",
+       "default": "<p>Other ingredients:  Hydroxypropyl methylcellulose, microcrystalline cellulose, calcium silicate, magnesium stearate and calcium carbonate (color). Contains Milk (lactose), Soy, Wheat</p>"
+    },
+    {
+      "type":"header",
+      "content":"Section Color Setting"
+    },
+    {
+      "type": "color_background",
+      "id": "background",
+      "label": "Background",
+      "default": "linear-gradient(#ffffff, #000000)"
+    },
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font Color",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Section Desktop Spacing" 
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "desktop_margin_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "desktop_margin_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mbl_margin_top",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mbl_margin_bottom",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP Ingredients"
+    }
+  ]
+}
+{% endschema %}
